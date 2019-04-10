@@ -11,15 +11,12 @@ import static org.junit.Assert.*;
 
 @RunWith(Arquillian.class)
 public class PatientFactoryTest {
-    @Deployment
-    public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class)
-                .addClass(PatientFactory.class)
-                .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
-    }
-
-    @org.junit.Test
+   @Test
     public void getPatient() {
+        String name = "Salomi";
+        Patient p= PatientFactory.getPatient(name);
+        System.out.println(p);
+        Assert.assertNotNull(p.getId());
 
     }
 }
